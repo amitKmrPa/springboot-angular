@@ -1,0 +1,106 @@
+
+<!-- <table>
+    <thead>
+        <th>Product Name</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.productName}}</td>
+        </tr>
+    </tbody>
+</table> -->
+
+
+<div align="center" id="view">
+    <!-- <input type="text" id="searchId" onkeyup="searchProducts()" placeholder="Search for products.." title="Type in a name">
+    <a th:unless="${userId}" href="/userLoginPage"><img src="icon/login-button-png-18030.png"
+            style="block-size: 45px;float:right" /></a>
+    <a th:unless="${userId}" href="/userRegistration"><img src="icon/download.png"
+            style="block-size: 80px;float:right" /></a>
+    <a th:if="${userId}" href="/destroy"><img src="icon/images.jpg" style="block-size: 70px;float:right" /></a>
+    <a th:if="${userId}" href="/viewUserKart"><img src="icon/icons8-shopping-cart.gif"
+            style="block-size: 45px;float:right" /></a>
+    <br /><br />
+    <h1 th:unless="${userId}" th:text="${err}" ></h1>
+ <h1 th:if="${userId}" th:text="${userName}" ></h1> -->
+</div>
+<div align="center">
+    <div *ngFor="let product of products"
+        style="border:1px solid black; height: 350px;width: 219px;margin: 10px;display: inline-block; ">
+        <img src='{{"assets/images/"+product.productImgId}}' width="205px" />
+        <div style="margin-top:30px ;" id="myUL" >
+            <table >
+                <tbody >          
+                    <tr>
+                        <th>
+                           <span> Product Name :</span>
+                        </th>
+                        <td>
+                            <span >{{product.productName}}</span>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th>
+                           <span> Product quantity :</span>
+                        </th>
+                        <td>
+                            <span >{{product.quantity}}</span>
+                        </td>
+                    </tr> 
+                     <tr>
+                        <th>
+                           <span> Product type :</span>
+                        </th>
+                        <td>
+                            <span >{{product.productType}}</span>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td>
+                           <span> Product ID :</span>
+                        </td>
+                        <td>
+                            <span th:text="${data.productId}"></span>
+                        </td>
+                    </tr> -->
+                    <tr>
+                        <th>
+                           <span> Product price :</span>
+                        </th>
+                        <td>
+                            <span >{{product.price}}</span>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                           <button class="btn btn-success" style="border-radius: 9px;"> <a style="color: black;" href="'/buyNow/' + {{product.productId}} +'/'+ {{userId}}+'/'+{{product.sellerId}}">Buy</a></button>
+                        </td>
+                        <td>
+                            <button class="btn btn-warning" style="border-radius: 9px;"><a style="color: black; " href="'/addToKart/' + {{product.productId}} +'/'+ {{userId}}+'/'+{{product.sellerId}}">Cart</a>    </button>                        </td>
+                    </tr>                         
+                </tbody>
+            </table>                
+        </div>
+    </div>
+</div>
+<!-- <a th:unless="${userId}" style="color: black; " href="/sellerRegPage">Seller Registration</a>
+<a th:unless="${userId}" style="color: black; " href="/sellerLoginPage">Seller Login</a> -->
+
+<script>
+function searchProducts() {
+var input, filter, ul, li, a, i, txtValue;
+input = document.getElementById("searchId");
+filter = input.value.toUpperCase();
+ul = document.getElementById("myUL");
+li = ul.getElementsByTagName("tbody");
+for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("span")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        li[i].style.display = "";
+    } else {
+        li[i].style.display = "none";
+    }
+}
+}
+</script>
